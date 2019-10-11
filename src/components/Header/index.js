@@ -31,6 +31,7 @@ const langDropdown = [
     label: 'English - RTL',
   },
 ];
+
 class Header extends PureComponent {
   state = {
     visibleDropdownAccount: false,
@@ -53,7 +54,7 @@ class Header extends PureComponent {
   render() {
     const { visibleDropdownAccount, visibleDropdownLang } = this.state;
     return (
-      <div className="container">
+      <div className="containerHeader">
         <div className="headerLeft">
           <button className="btnTag" type="button">
             Tag

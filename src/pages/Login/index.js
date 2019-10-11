@@ -8,8 +8,32 @@ import saga from './saga';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import Header from 'components/Header';
+import SideBar from 'components/SideBar';
 import './styles.scss';
 
+const sideBar = [
+  {
+    label: 'Dashboard',
+  },
+  {
+    label: 'Pages',
+  },
+  {
+    label: 'Applications',
+  },
+  {
+    label: 'UI',
+  },
+  {
+    label: 'Menu',
+  },
+  {
+    label: 'Plank Page',
+  },
+  {
+    label: 'Docs',
+  },
+];
 class Button extends PureComponent {
   onClick = () => {
     const { getData, data } = this.props;
@@ -20,8 +44,16 @@ class Button extends PureComponent {
   render() {
     const { data } = this.props;
     return (
-      <div>
+      <div className="container">
         <Header />
+        <div className="containerContent">
+          <div className="sideBar">
+            <SideBar listMenu={sideBar} />
+          </div>
+          <div className="content">
+            <p>sdfsd</p>
+          </div>
+        </div>
       </div>
     );
   }
