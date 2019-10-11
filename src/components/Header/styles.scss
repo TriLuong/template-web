@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem 0;
+  .dropdownMenu {
+    position: relative;
+  }
+  .headerLeft {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .btnTag {
+      font-size: 20px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    .searchInput {
+      font-size: 0.8rem;
+      border-radius: 1rem;
+      outline: none;
+      border: none;
+      background-color: #f8f8f8;
+      color: #303030;
+      padding: 0.5rem 1rem;
+      line-height: 1.75;
+    }
+    .btnLang {
+      background: #f8f8f8;
+      border: 1px solid #f8f8f8;
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      outline: none;
+      cursor: pointer;
+      border-radius: 50px;
+      color: #8f8f8f;
+      margin-left: 10px;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #922c88;
+        color: white;
+      }
+    }
+    .btnBuy {
+      background: #f8f8f8;
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      outline: none;
+      cursor: pointer;
+      border-radius: 50px;
+      color: #922c88;
+      border: 1px solid #922c88;
+      margin-left: 10px;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #922c88;
+        color: white;
+      }
+    }
+  }
+  .headerRight {
+    padding-right: 1rem;
+    .btnAccount {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      .accountName {
+        font-size: 0.8rem;
+        color: #303030;
+        margin-right: 10px;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: #9f9f9f;
+      }
+    }
+  }
+}

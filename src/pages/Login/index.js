@@ -7,7 +7,7 @@ import reducer from './reducer';
 import saga from './saga';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-
+import Header from 'components/Header';
 import './styles.scss';
 
 class Button extends PureComponent {
@@ -21,10 +21,7 @@ class Button extends PureComponent {
     const { data } = this.props;
     return (
       <div>
-        <button type="button" className="btn" onClick={this.onClick}>
-          OK
-        </button>
-        <p style={{ fontSize: 30 }}>{data}</p>
+        <Header />
       </div>
     );
   }

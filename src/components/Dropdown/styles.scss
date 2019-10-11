@@ -1,0 +1,31 @@
+.containerDropdown {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  .btnDropdown {
+    text-align: left;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    padding: 0.75rem 1.5rem;
+    color: #303030;
+    cursor: pointer;
+    &:hover {
+      background-color: #f8f8f8;
+      color: #303030;
+    }
+  }
+  transition: all 1s;
+}
+.show {
+  display: flex;
+}
