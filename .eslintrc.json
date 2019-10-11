@@ -47,6 +47,7 @@
     "import/no-extraneous-dependencies": 0,
     "no-plusplus": 0,
     "global-require": 0,
+    "react/prop-types": 0,
     "prefer-destructuring": [
       "error",
       {
