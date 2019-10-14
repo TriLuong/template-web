@@ -36,16 +36,33 @@ class Home extends PureComponent {
       itemSelected: 'Current Loads',
     };
   }
+
+  componentDidMount() {}
   setItemSelected = item => {
     this.setState({ itemSelected: item });
   };
 
+  onSubmitCurrentLoads = values => {
+    const { addLoad, data } = this.props;
+    console.log('data', data);
+
+    addLoad(values);
+  };
+
   renderContent = content => {
+    const { data } = this.props;
+    console.log('data', data);
+
     switch (content) {
       case 'Dashboard':
         return <Dashboard />;
       case 'Current Loads':
-        return <CurrentLoads data={dataCurrent} />;
+        return (
+          <CurrentLoads
+            data={dataCurrent}
+            onSubmit={this.onSubmitCurrentLoads}
+          />
+        );
       default:
         return null;
     }
@@ -82,7 +99,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getData: evt => dispatch(actions.loginRequest(evt)),
+  addLoad: evt => dispatch(actions.addLoad(evt)),
 });
 
 const withConnect = connect(
@@ -90,8 +107,8 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'loginReducer', reducer });
-const withSaga = injectSaga({ key: 'loginSaga', saga });
+const withReducer = injectReducer({ key: 'currentLoadsReducer', reducer });
+const withSaga = injectSaga({ key: 'currentLoadsSaga', saga });
 
 export default compose(
   withReducer,

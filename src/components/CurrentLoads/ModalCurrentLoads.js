@@ -51,7 +51,8 @@ const optionRep = [
 ];
 class ModalCurrentLoads extends PureComponent {
   onSubmit = values => {
-    console.log('Submit', values);
+    const { onSubmit } = this.props;
+    onSubmit(values);
   };
 
   render() {

@@ -13,7 +13,7 @@ class CurrentLoads extends PureComponent {
   };
   render() {
     const { modal } = this.state;
-    const { data } = this.props;
+    const { data, onSubmit } = this.props;
     return (
       <div>
         <div className="btnAddContainer">
@@ -26,6 +26,7 @@ class CurrentLoads extends PureComponent {
           visibleModal={modal}
           toggle={this.toggle}
           title="ADD LOADS"
+          onSubmit={onSubmit}
         />
       </div>
     );

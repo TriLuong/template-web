@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-const loginReducer = state => state.get('loginReducer');
+const currentLoadsReducer = state => state.get('currentLoadsReducer');
 
 export const getData = createSelector(
-  loginReducer,
-  fetching => fetching.get('data'),
+  currentLoadsReducer,
+  data => data.get('data'),
 );
 
 export const getErr = createSelector(
-  loginReducer,
-  dataUsers => dataUsers.get('error'),
+  currentLoadsReducer,
+  err => err.get('error'),
 );

@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import * as types from './constants';
 
-export const loginRequest = createAction(types.LOGIN_REQUEST);
-export const loginSuccess = createAction(types.LOGIN_SUCCESS);
-export const loginFailure = createAction(types.LOGIN_FAILURE);
+export const addLoad = createAction(types.ADD_LOAD_REQUEST);
+export const addLoadSuccess = createAction(types.ADD_LOAD_SUCCESS);
+export const addLoadFailure = createAction(types.ADD_LOAD_FAILURE);
