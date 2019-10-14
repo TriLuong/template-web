@@ -31,7 +31,7 @@ class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      itemSelected: 'Dashboard',
+      itemSelected: 'Current Loads',
     };
   }
   setItemSelected = item => {

@@ -6,7 +6,7 @@ import history from 'utils/history';
 import App from './App';
 import configureStore from './configureStore';
 import * as serviceWorker from './serviceWorker';
-import 'assets/scss/custom.scss';
+import 'assets/scss/app.scss';
 
 const initialState = {};
 export const store = configureStore(initialState, history);
