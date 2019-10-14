@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 class ModalBase extends PureComponent {
   render() {
@@ -8,14 +8,7 @@ class ModalBase extends PureComponent {
       <Modal isOpen={visibleModal} toggle={toggle} style={{ width }}>
         <ModalHeader toggle={toggle}>{title}</ModalHeader>
         <ModalBody>{children}</ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Do Something
-          </Button>
-          <Button color="secondary" onClick={toggle}>
-            Cancel
-          </Button>
-        </ModalFooter>
+        {/* <ModalFooter /> */}
       </Modal>
     );
   }

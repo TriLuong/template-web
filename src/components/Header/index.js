@@ -72,9 +72,9 @@ class Header extends PureComponent {
               visibleDropdown={visibleDropdownLang}
             />
           </div>
-          <buton type="button" className="btnBuy">
+          <button type="button" className="btnBuy">
             BUY
-          </buton>
+          </button>
         </div>
         <div className="headerRight">
           <div className="dropdownMenu">
