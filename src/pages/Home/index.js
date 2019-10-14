@@ -27,7 +27,7 @@ const sideBar = [
     label: 'Users',
   },
 ];
-class Button extends PureComponent {
+class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,4 +95,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(Button);
+)(Home);
