@@ -6,6 +6,7 @@ import history from 'utils/history';
 import App from './App';
 import configureStore from './configureStore';
 import * as serviceWorker from './serviceWorker';
+import 'assets/scss/custom.scss';
 
 const initialState = {};
 export const store = configureStore(initialState, history);
@@ -17,7 +18,7 @@ ReactDOM.render(
       <App />
     </ConnectedRouter>
   </Provider>,
-  MOUNT_NODE
+  MOUNT_NODE,
 );
 
 export default {};

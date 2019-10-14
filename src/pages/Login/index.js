@@ -9,6 +9,8 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import Header from 'components/Header';
 import SideBar from 'components/SideBar';
+import Dashboard from 'components/Dashboard';
+import CurrentLoads from 'components/CurrentLoads';
 import './styles.scss';
 
 const sideBar = [
@@ -26,23 +28,45 @@ const sideBar = [
   },
 ];
 class Button extends PureComponent {
-  onClick = () => {
-    const { getData, data } = this.props;
-    getData('adsfsd');
-    console.log(data);
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemSelected: 'Dashboard',
+    };
+  }
+  setItemSelected = item => {
+    this.setState({ itemSelected: item });
+  };
+
+  renderContent = content => {
+    switch (content) {
+      case 'Dashboard':
+        return <Dashboard />;
+      case 'Current Loads':
+        return <CurrentLoads />;
+      default:
+        return null;
+    }
   };
 
   render() {
-    const { data } = this.props;
+    const { itemSelected } = this.state;
     return (
-      <div className="container">
+      <div className="containerHome">
         <Header />
         <div className="containerContent">
           <div className="sideBar">
-            <SideBar listMenu={sideBar} />
+            <SideBar
+              listMenu={sideBar}
+              itemSelected={itemSelected}
+              setItemSelected={this.setItemSelected}
+            />
           </div>
           <div className="content">
-            <p>sdfsd</p>
+            <div className="headerContent">
+              <h2>{itemSelected}</h2>
+              {this.renderContent(itemSelected)}
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-.container {
+.containerHome {
   height: 100vh;
   background-color: #f8f8f8;
   .containerContent {
@@ -10,6 +10,11 @@
     }
     .content {
       flex: 10;
+      padding-left: 50px;
+      margin-top: 20px;
+      .headerContent {
+        text-align: left;
+      }
     }
   }
 }

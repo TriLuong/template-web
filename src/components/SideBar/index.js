@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
+import React, { PureComponent } from 'react';
 import './styles.scss';
 
-const SideBar = ({ listMenu }) => {
-  const [itemSelected, setItemSelected] = useState('');
+class SideBar extends PureComponent {
+  setItemSelected = itemSelected => {
+    const { setItemSelected } = this.props;
+    setItemSelected(itemSelected);
+  };
 
-  return (
-    <ul className="containerSidebar">
-      {listMenu.map((item, index) => (
-        <li key={index}>
-          <div
-            className={
-              itemSelected === item.label ? 'lineLeft active' : 'lineLeft'
-            }
-          />
-          <a
-            href="#as"
-            onClick={() => setItemSelected(item.label)}
-            className={itemSelected === item.label ? 'linkActive' : ''}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-};
+  render() {
+    const { listMenu, itemSelected } = this.props;
+    return (
+      <ul className="containerSidebar">
+        {listMenu.map((item, index) => (
+          <li key={index}>
+            <div
+              className={
+                itemSelected === item.label ? 'lineLeft active' : 'lineLeft'
+              }
+            />
+            <a
+              href="#as"
+              onClick={() => this.setItemSelected(item.label)}
+              className={itemSelected === item.label ? 'linkActive' : ''}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
 export default SideBar;

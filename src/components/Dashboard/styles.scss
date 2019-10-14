@@ -1,0 +1,16 @@
+.dashboardContainer {
+  .dashboardContent {
+    display: flex;
+    flex-direction: row;
+    .dashboardItem {
+      text-align: center;
+      background-color: white;
+      width: 30%;
+      max-height: 300px;
+      padding: 20px;
+      margin: 20px;
+      margin-left: 0;
+      border-radius: 10px;
+    }
+  }
+}
