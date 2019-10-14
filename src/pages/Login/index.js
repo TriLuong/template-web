@@ -16,22 +16,13 @@ const sideBar = [
     label: 'Dashboard',
   },
   {
-    label: 'Pages',
+    label: 'Current Loads',
   },
   {
-    label: 'Applications',
+    label: 'Past Loads',
   },
   {
-    label: 'UI',
-  },
-  {
-    label: 'Menu',
-  },
-  {
-    label: 'Plank Page',
-  },
-  {
-    label: 'Docs',
+    label: 'Users',
   },
 ];
 class Button extends PureComponent {
