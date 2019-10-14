@@ -2,7 +2,53 @@ import React, { PureComponent } from 'react';
 import { Form, FormGroup, Label, Input, Col, Row, Button } from 'reactstrap';
 import { Formik } from 'formik';
 import Modal from 'components/common/Modal';
+import InputSelect from 'components/common/Input/InputSelect';
 
+const optionDriver = [
+  {
+    id: 1,
+    label: 'Tony',
+  },
+  {
+    id: 2,
+    label: 'Hulk',
+  },
+  {
+    id: 3,
+    label: 'Larson',
+  },
+  {
+    id: 4,
+    label: 'Brian',
+  },
+  {
+    id: 5,
+    label: 'Scarlet',
+  },
+];
+
+const optionRep = [
+  {
+    id: 1,
+    label: 'Mark',
+  },
+  {
+    id: 2,
+    label: 'Bill',
+  },
+  {
+    id: 3,
+    label: 'Elon',
+  },
+  {
+    id: 4,
+    label: 'Warrent',
+  },
+  {
+    id: 5,
+    label: 'Bezos',
+  },
+];
 class ModalCurrentLoads extends PureComponent {
   onSubmit = values => {
     console.log('Submit', values);
@@ -62,8 +108,8 @@ class ModalCurrentLoads extends PureComponent {
                     <Col sm={9}>
                       <Input
                         type="text"
-                        name="rail"
-                        id="rail"
+                        name="returnRail"
+                        id="returnRail"
                         placeholder="Return Rail"
                         onChange={handleChange}
                       />
@@ -87,6 +133,36 @@ class ModalCurrentLoads extends PureComponent {
                   </FormGroup>
                 </Col>
               </Row>
+              <FormGroup row>
+                <Label for="examplePassword" sm={2}>
+                  Loaded Rail
+                </Label>
+                <Col sm={10}>
+                  <Input
+                    type="text"
+                    name="loadedRail"
+                    id="loadedRail"
+                    placeholder="Loaded Rail"
+                    onChange={handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <InputSelect
+                  label="Driver"
+                  name="driver"
+                  option={optionDriver}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+              <FormGroup row>
+                <InputSelect
+                  label="Rep"
+                  name="rep"
+                  option={optionRep}
+                  onChange={handleChange}
+                />
+              </FormGroup>
               <Button type="submit" color="primary">
                 Do Something
               </Button>

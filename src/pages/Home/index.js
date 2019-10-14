@@ -13,6 +13,8 @@ import Dashboard from 'components/Dashboard';
 import CurrentLoads from 'components/CurrentLoads';
 import './styles.scss';
 
+import dataCurrent from './dataCurrent';
+
 const sideBar = [
   {
     label: 'Dashboard',
@@ -43,7 +45,7 @@ class Home extends PureComponent {
       case 'Dashboard':
         return <Dashboard />;
       case 'Current Loads':
-        return <CurrentLoads />;
+        return <CurrentLoads data={dataCurrent} />;
       default:
         return null;
     }

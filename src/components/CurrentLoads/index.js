@@ -13,6 +13,7 @@ class CurrentLoads extends PureComponent {
   };
   render() {
     const { modal } = this.state;
+    const { data } = this.props;
     return (
       <div>
         <div className="btnAddContainer">
@@ -20,11 +21,11 @@ class CurrentLoads extends PureComponent {
             +
           </Button>
         </div>
-        <TableCurrentLoads />
+        <TableCurrentLoads data={data} />
         <ModalCurrentLoads
           visibleModal={modal}
           toggle={this.toggle}
-          title="Modal"
+          title="ADD LOADS"
         />
       </div>
     );
