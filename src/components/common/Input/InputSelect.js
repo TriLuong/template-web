@@ -3,12 +3,20 @@ import { Input, Label, Col } from 'reactstrap';
 
 const InputSelect = ({ option, label, name, id, onChange, value }) => (
   <>
-    <Label for="examplePassword" sm={2}>
-      {label}
-    </Label>
+    {label ? (
+      <Label for="examplePassword" sm={2}>
+        {label}
+      </Label>
+    ) : null}
+
     <Col sm={10}>
-      <Input type="select" name={name} id={id || name} onChange={onChange}>
-        <option>--- Please select ---</option>
+      <Input
+        type="select"
+        name={name}
+        id={id || name}
+        onChange={onChange}
+        defaultValue={value || option[0].value}
+      >
         {option.map(item => (
           <option
             key={item.id}

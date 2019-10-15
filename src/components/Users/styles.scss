@@ -3,7 +3,12 @@
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   padding-bottom: 30px;
+  flex: 1;
+  .fitlerUser {
+    width: 150px;
+  }
   .btnAdd {
     border-radius: 50%;
   }

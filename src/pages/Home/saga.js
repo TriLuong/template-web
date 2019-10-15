@@ -52,6 +52,14 @@ function* editUser({ payload }) {
   }
 }
 
+function* filterUsers({ payload }) {
+  try {
+    yield put(actions.filterUsersSuccess(payload));
+  } catch (error) {
+    yield put(actions.filterUsersFailure(error));
+  }
+}
+
 export default function* currentLoadWatcher() {
   yield takeLatest(types.ADD_LOAD_REQUEST, addLoadRequest);
   yield takeLatest(types.GET_CURRENT_LOADS_REQUEST, getCurrentLoads);
@@ -59,4 +67,5 @@ export default function* currentLoadWatcher() {
   yield takeLatest(types.ADD_USER_REQUEST, addUser);
   yield takeLatest(types.GET_USER_REQUEST, getUser);
   yield takeLatest(types.EDIT_USER_REQUEST, editUser);
+  yield takeLatest(types.FILTER_USERS_REQUEST, filterUsers);
 }

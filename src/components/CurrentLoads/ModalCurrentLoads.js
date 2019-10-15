@@ -4,62 +4,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Modal from 'components/common/Modal';
 import { InputSelect } from 'components/common/Input';
+import { optionDriver, optionRep } from 'pages/Home/constants';
 
-const optionDriver = [
-  {
-    id: 1,
-    value: 'Tony',
-    label: 'Tony',
-  },
-  {
-    id: 2,
-    value: 'Hulk',
-    label: 'Hulk',
-  },
-  {
-    id: 3,
-    value: 'Larson',
-    label: 'Larson',
-  },
-  {
-    id: 4,
-    value: 'Brian',
-    label: 'Brian',
-  },
-  {
-    id: 5,
-    value: 'Scarlet',
-    label: 'Scarlet',
-  },
-];
-
-const optionRep = [
-  {
-    id: 1,
-    value: 'Mark',
-    label: 'Mark',
-  },
-  {
-    id: 2,
-    value: 'Bill',
-    label: 'Bill',
-  },
-  {
-    id: 3,
-    value: 'Elon',
-    label: 'Elon',
-  },
-  {
-    id: 4,
-    value: 'Warrent',
-    label: 'Warrent',
-  },
-  {
-    id: 5,
-    value: 'Bezos',
-    label: 'Bezos',
-  },
-];
 class ModalCurrentLoads extends PureComponent {
   onSubmit = values => {
     const { onSubmit } = this.props;
@@ -184,7 +130,7 @@ class ModalCurrentLoads extends PureComponent {
                   onChange={handleChange}
                 />
               </FormGroup>
-              <Button type="submit" color="primary" disabled={!isValid}>
+              <Button type="submit" color="primary">
                 Add Load
               </Button>
               <Button color="secondary" onClick={toggle}>

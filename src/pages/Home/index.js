@@ -54,6 +54,7 @@ class Home extends PureComponent {
 
   onSubmitCurrentLoads = values => {
     const { doAddLoad } = this.props;
+    console.log('current', values);
     doAddLoad(values);
     this.toggleCurrentLoads();
   };
@@ -98,6 +99,12 @@ class Home extends PureComponent {
     this.toggleUsers();
   };
 
+  handleChangeFilter = event => {
+    const { doFilterUsers } = this.props;
+    const { value } = event.target;
+    doFilterUsers({ role: value });
+  };
+
   renderContent = content => {
     const { currentLoads, users, user } = this.props;
     const { modalCurrentLoads, modalUser, isEditUser } = this.state;
@@ -124,6 +131,7 @@ class Home extends PureComponent {
             onEdit={this.EditUser}
             user={isEditUser ? user : {}}
             title={isEditUser ? 'EDIT USER' : 'ADD USER'}
+            handleChangeFilter={this.handleChangeFilter}
           />
         );
       default:
@@ -172,6 +180,7 @@ const mapDispatchToProps = dispatch => ({
   doAddUser: evt => dispatch(actions.addUser(evt)),
   doGetUser: evt => dispatch(actions.getUser(evt)),
   doEditUser: evt => dispatch(actions.editUser(evt)),
+  doFilterUsers: evt => dispatch(actions.filterUsers(evt)),
 });
 
 const withConnect = connect(
