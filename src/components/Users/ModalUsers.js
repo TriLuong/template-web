@@ -67,7 +67,8 @@ class ModalUsers extends PureComponent {
         <Formik
           initialValues={user || {}}
           onSubmit={this.onSubmit}
-          validationSchema={schema}>
+          validationSchema={schema}
+          isInitialValid={schema.isValidSync(user)}>
           {({ handleSubmit, handleChange, isValid, values }) => (
             <Form onSubmit={handleSubmit}>
               <Row form>
