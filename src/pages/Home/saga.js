@@ -44,10 +44,19 @@ function* addUser({ payload }) {
   }
 }
 
+function* editUser({ payload }) {
+  try {
+    yield put(actions.editUserSuccess(payload));
+  } catch (error) {
+    yield put(actions.editUserFailure(error));
+  }
+}
+
 export default function* currentLoadWatcher() {
   yield takeLatest(types.ADD_LOAD_REQUEST, addLoadRequest);
   yield takeLatest(types.GET_CURRENT_LOADS_REQUEST, getCurrentLoads);
   yield takeLatest(types.GET_USERS_REQUEST, getUsers);
   yield takeLatest(types.ADD_USER_REQUEST, addUser);
   yield takeLatest(types.GET_USER_REQUEST, getUser);
+  yield takeLatest(types.EDIT_USER_REQUEST, editUser);
 }

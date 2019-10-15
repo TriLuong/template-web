@@ -4,7 +4,15 @@ import TableUsers from './TableUsers';
 import ModalUsers from './ModalUsers';
 import './styles.scss';
 
-const Users = ({ data, visibleModal, toggle, onSubmit, onEdit, user }) => (
+const Users = ({
+  data,
+  visibleModal,
+  toggle,
+  onSubmit,
+  onEdit,
+  user,
+  title,
+}) => (
   <div>
     <div className="btnAddContainer">
       <Button color="success" className="btnAdd" onClick={toggle}>
@@ -13,7 +21,7 @@ const Users = ({ data, visibleModal, toggle, onSubmit, onEdit, user }) => (
     </div>
     <TableUsers data={data} onEdit={onEdit} />
     <ModalUsers
-      title="ADD USER"
+      title={title}
       visibleModal={visibleModal}
       toggle={toggle}
       onSubmit={onSubmit}

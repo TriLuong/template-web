@@ -8,18 +8,22 @@ import { InputSelect } from 'components/common/Input';
 const optionRole = [
   {
     id: 1,
+    value: 'admin',
     label: 'Admin',
   },
   {
     id: 2,
+    value: 'driver',
     label: 'Driver',
   },
   {
     id: 3,
+    value: 'truck',
     label: 'Truck',
   },
   {
     id: 4,
+    value: 'rep',
     label: 'Rep',
   },
 ];
@@ -27,10 +31,12 @@ const optionRole = [
 const optionVailable = [
   {
     id: 1,
+    value: true,
     label: 'Yes',
   },
   {
     id: 2,
+    value: false,
     label: 'No',
   },
 ];
@@ -180,7 +186,7 @@ class ModalUsers extends PureComponent {
               </FormGroup>
 
               <Button type="submit" color="primary" disabled={!isValid}>
-                Add User
+                {title}
               </Button>
               <Button color="secondary" onClick={toggle}>
                 Cancel

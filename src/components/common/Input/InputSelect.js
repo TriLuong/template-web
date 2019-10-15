@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Label, Col } from 'reactstrap';
 
-const InputSelect = ({ option, label, name, id, onChange }) => (
+const InputSelect = ({ option, label, name, id, onChange, value }) => (
   <>
     <Label for="examplePassword" sm={2}>
       {label}
@@ -10,7 +10,13 @@ const InputSelect = ({ option, label, name, id, onChange }) => (
       <Input type="select" name={name} id={id || name} onChange={onChange}>
         <option>--- Please select ---</option>
         {option.map(item => (
-          <option key={item.id}>{item.label}</option>
+          <option
+            key={item.id}
+            selected={item.value === value}
+            value={item.value}
+          >
+            {item.label}
+          </option>
         ))}
       </Input>
     </Col>

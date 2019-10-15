@@ -38,6 +38,7 @@ class Home extends PureComponent {
       modalCurrentLoads: false,
       modalUser: false,
       visibleSidebar: true,
+      isEditUser: false,
     };
   }
 
@@ -58,8 +59,14 @@ class Home extends PureComponent {
   };
 
   onSubmitUser = values => {
-    const { doAddUser } = this.props;
-    doAddUser(values);
+    const { doAddUser, doEditUser } = this.props;
+    const { isEditUser } = this.state;
+    if (!isEditUser) {
+      doAddUser(values);
+    } else {
+      doEditUser(values);
+    }
+    this.setState({ isEditUser: false });
     this.toggleUsers();
   };
 
@@ -70,9 +77,12 @@ class Home extends PureComponent {
   };
 
   toggleUsers = () => {
-    this.setState(prevState => ({
-      modalUser: !prevState.modalUser,
-    }));
+    const { modalUser } = this.state;
+    const newModalUser = !modalUser;
+    if (!newModalUser) {
+      this.setState({ isEditUser: false });
+    }
+    this.setState({ modalUser: newModalUser });
   };
 
   toggleSidebar = () => {
@@ -83,13 +93,14 @@ class Home extends PureComponent {
 
   EditUser = id => {
     const { doGetUser } = this.props;
+    this.setState({ isEditUser: true });
     doGetUser({ id });
     this.toggleUsers();
   };
 
   renderContent = content => {
     const { currentLoads, users, user } = this.props;
-    const { modalCurrentLoads, modalUser } = this.state;
+    const { modalCurrentLoads, modalUser, isEditUser } = this.state;
 
     switch (content) {
       case 'Dashboard':
@@ -111,7 +122,8 @@ class Home extends PureComponent {
             visibleModal={modalUser}
             toggle={this.toggleUsers}
             onEdit={this.EditUser}
-            user={user}
+            user={isEditUser ? user : {}}
+            title={isEditUser ? 'EDIT USER' : 'ADD USER'}
           />
         );
       default:
@@ -159,6 +171,7 @@ const mapDispatchToProps = dispatch => ({
   doGetUsers: evt => dispatch(actions.getUsers(evt)),
   doAddUser: evt => dispatch(actions.addUser(evt)),
   doGetUser: evt => dispatch(actions.getUser(evt)),
+  doEditUser: evt => dispatch(actions.editUser(evt)),
 });
 
 const withConnect = connect(

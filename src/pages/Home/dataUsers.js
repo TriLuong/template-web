@@ -1,8 +1,8 @@
 export default [
   {
     id: 1,
-    role: 'Driver', // Driver, Rep, Admin, Truck
-    name: 'Micheal',
+    role: 'driver', // Driver, Rep, Admin, Truck
+    name: 'Tony',
     email: 'micheal@gmail.com',
     password: 'test36',
     cell: '0123456',
@@ -12,8 +12,8 @@ export default [
   },
   {
     id: 2,
-    role: 'Rep', // Driver, Rep, Admin, Truck
-    name: 'Micheal',
+    role: 'rep', // Driver, Rep, Admin, Truck
+    name: 'Tobey',
     email: 'micheal@gmail.com',
     password: 'test1234',
     cell: '056466',
@@ -23,8 +23,8 @@ export default [
   },
   {
     id: 3,
-    role: 'Admin', // Driver, Rep, Admin, Truck
-    name: 'Micheal',
+    role: 'admin', // Driver, Rep, Admin, Truck
+    name: 'Steve',
     email: 'micheal@gmail.com',
     password: 'test12',
     cell: '0964678',
@@ -33,8 +33,8 @@ export default [
     notes: '',
   },
   {
-    id: 3,
-    role: 'Truck', // Driver, Rep, Admin, Truck
+    id: 4,
+    role: 'truck', // Driver, Rep, Admin, Truck
     name: 'Micheal',
     email: 'micheal@gmail.com',
     password: 'test4',

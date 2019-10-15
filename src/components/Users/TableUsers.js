@@ -19,7 +19,7 @@ const TableUsers = ({ data, onEdit }) => (
     <tbody>
       {data.map((item, index) => (
         <tr key={index}>
-          <td>{item.role}</td>
+          <td style={{ textTransform: 'capitalize' }}>{item.role}</td>
           <td>{item.name}</td>
           <td>{item.email}</td>
           <td>{item.password}</td>
