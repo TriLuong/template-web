@@ -1,36 +1,24 @@
-import React, { PureComponent } from 'react';
-import TableCurrentLoads from './TableCurrentLoads';
+import React from 'react';
 import { Button } from 'reactstrap';
+import TableCurrentLoads from './TableCurrentLoads';
 import ModalCurrentLoads from './ModalCurrentLoads';
 import './styles.scss';
 
-class CurrentLoads extends PureComponent {
-  state = {
-    modal: false,
-  };
-  toggle = () => {
-    this.setState(prevState => ({ modal: !prevState.modal }));
-  };
-  render() {
-    const { modal } = this.state;
-    const { data, onSubmit } = this.props;
-    return (
-      <div>
-        <div className="btnAddContainer">
-          <Button color="success" className="btnAdd" onClick={this.toggle}>
-            +
-          </Button>
-        </div>
-        <TableCurrentLoads data={data} />
-        <ModalCurrentLoads
-          visibleModal={modal}
-          toggle={this.toggle}
-          title="ADD LOADS"
-          onSubmit={onSubmit}
-        />
-      </div>
-    );
-  }
-}
+const CurrentLoads = ({ data, onSubmit, visibleModal, toggle }) => (
+  <div>
+    <div className="btnAddContainer">
+      <Button color="success" className="btnAdd" onClick={toggle}>
+        +
+      </Button>
+    </div>
+    <TableCurrentLoads data={data} />
+    <ModalCurrentLoads
+      visibleModal={visibleModal}
+      toggle={toggle}
+      title="ADD LOADS"
+      onSubmit={onSubmit}
+    />
+  </div>
+);
 
 export default CurrentLoads;

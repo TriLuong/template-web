@@ -11,7 +11,7 @@ export default [
     loadedRail: 12,
     puName: 'Ali',
     driver: 'Micky',
-    Rep: 'Donald',
+    rep: 'Donald',
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export default [
     loadedRail: 12,
     puName: 'Mohamed',
     driver: 'Stack',
-    Rep: 'Man',
+    rep: 'Man',
   },
   {
     id: 3,
@@ -39,6 +39,6 @@ export default [
     loadedRail: 12,
     puName: 'Inu',
     driver: 'Jasa',
-    Rep: 'Naru',
+    rep: 'Naru',
   },
 ];

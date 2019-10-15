@@ -32,6 +32,7 @@ class Home extends PureComponent {
     super(props);
     this.state = {
       itemSelected: 'Current Loads',
+      modalCurrentLoads: false,
     };
   }
 
@@ -46,19 +47,30 @@ class Home extends PureComponent {
 
   onSubmitCurrentLoads = values => {
     const { doAddLoad } = this.props;
-
     doAddLoad(values);
+    this.toggle();
+  };
+
+  toggle = () => {
+    this.setState(prevState => ({
+      modalCurrentLoads: !prevState.modalCurrentLoads,
+    }));
   };
 
   renderContent = content => {
     const { data } = this.props;
-
+    const { modalCurrentLoads } = this.state;
     switch (content) {
       case 'Dashboard':
         return <Dashboard />;
       case 'Current Loads':
         return (
-          <CurrentLoads data={data} onSubmit={this.onSubmitCurrentLoads} />
+          <CurrentLoads
+            data={data}
+            onSubmit={this.onSubmitCurrentLoads}
+            visibleModal={modalCurrentLoads}
+            toggle={this.toggle}
+          />
         );
       default:
         return null;

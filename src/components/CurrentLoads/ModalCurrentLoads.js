@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Form, FormGroup, Label, Input, Col, Row, Button } from 'reactstrap';
 import { Formik } from 'formik';
 import Modal from 'components/common/Modal';
-import InputSelect from 'components/common/Input/InputSelect';
+import { InputSelect } from 'components/common/Input';
 
 const optionDriver = [
   {
@@ -74,7 +74,7 @@ class ModalCurrentLoads extends PureComponent {
                     </Label>
                     <Col sm={9}>
                       <Input
-                        type="text"
+                        type="number"
                         name="load"
                         id="load"
                         placeholder="Load No"
@@ -90,7 +90,7 @@ class ModalCurrentLoads extends PureComponent {
                     </Label>
                     <Col sm={9}>
                       <Input
-                        type="text"
+                        type="number"
                         name="container"
                         id="container"
                         placeholder="Container No"
@@ -108,7 +108,7 @@ class ModalCurrentLoads extends PureComponent {
                     </Label>
                     <Col sm={9}>
                       <Input
-                        type="text"
+                        type="number"
                         name="returnRail"
                         id="returnRail"
                         placeholder="Return Rail"
@@ -124,7 +124,7 @@ class ModalCurrentLoads extends PureComponent {
                     </Label>
                     <Col sm={9}>
                       <Input
-                        type="text"
+                        type="number"
                         name="pull"
                         id="pull"
                         placeholder="Pull"
@@ -140,7 +140,7 @@ class ModalCurrentLoads extends PureComponent {
                 </Label>
                 <Col sm={10}>
                   <Input
-                    type="text"
+                    type="number"
                     name="loadedRail"
                     id="loadedRail"
                     placeholder="Loaded Rail"
