@@ -41,7 +41,7 @@ class ModalUsers extends PureComponent {
   };
 
   render() {
-    const { visibleModal, toggle, title } = this.props;
+    const { visibleModal, toggle, title, user } = this.props;
     const schema = Yup.object().shape({
       role: Yup.string().required('Required'),
       name: Yup.string().required('Required'),
@@ -49,16 +49,20 @@ class ModalUsers extends PureComponent {
       password: Yup.string().required('Required'),
       cell: Yup.number().required('Required'),
       availble: Yup.string().required('Required'),
-      notes: Yup.string().required('Required'),
+      //   notes: Yup.string().required('Required'),
     });
+
     return (
       <Modal
         visibleModal={visibleModal}
         toggle={toggle}
         title={title}
         width="1000px">
-        <Formik onSubmit={this.onSubmit} validationSchema={schema}>
-          {({ handleSubmit, handleChange, isValid }) => (
+        <Formik
+          initialValues={user || {}}
+          onSubmit={this.onSubmit}
+          validationSchema={schema}>
+          {({ handleSubmit, handleChange, isValid, values }) => (
             <Form onSubmit={handleSubmit}>
               <Row form>
                 <Col sm={6}>
@@ -68,6 +72,7 @@ class ModalUsers extends PureComponent {
                       name="role"
                       option={optionRole}
                       onChange={handleChange}
+                      value={values.role}
                     />
                   </FormGroup>
                 </Col>
@@ -86,6 +91,7 @@ class ModalUsers extends PureComponent {
                         id="name"
                         placeholder="Name"
                         onChange={handleChange}
+                        value={values.name}
                       />
                     </Col>
                   </FormGroup>
@@ -102,6 +108,7 @@ class ModalUsers extends PureComponent {
                         id="email"
                         placeholder="Email"
                         onChange={handleChange}
+                        value={values.email}
                       />
                     </Col>
                   </FormGroup>
@@ -120,6 +127,7 @@ class ModalUsers extends PureComponent {
                         id="password"
                         placeholder="Password"
                         onChange={handleChange}
+                        value={values.password}
                       />
                     </Col>
                   </FormGroup>
@@ -136,6 +144,7 @@ class ModalUsers extends PureComponent {
                         id="cell"
                         placeholder="Cell Phone"
                         onChange={handleChange}
+                        value={values.cell}
                       />
                     </Col>
                   </FormGroup>
@@ -149,6 +158,7 @@ class ModalUsers extends PureComponent {
                       name="availble"
                       option={optionVailable}
                       onChange={handleChange}
+                      value={values.availble}
                     />
                   </FormGroup>
                 </Col>
@@ -164,6 +174,7 @@ class ModalUsers extends PureComponent {
                     id="notes"
                     placeholder="Notes"
                     onChange={handleChange}
+                    value={values.notes}
                   />
                 </Col>
               </FormGroup>

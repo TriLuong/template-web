@@ -20,3 +20,11 @@ export const getUsersFailure = createAction(types.GET_USERS_FAILURE);
 export const addUser = createAction(types.ADD_USER_REQUEST);
 export const addUserSuccess = createAction(types.ADD_USER_SUCCESS);
 export const addUserFailure = createAction(types.ADD_USER_FAILURE);
+
+export const getUser = createAction(types.GET_USER_REQUEST);
+export const getUserSuccess = createAction(types.GET_USER_SUCCESS);
+export const getUserFailure = createAction(types.GET_USER_FAILURE);
+
+export const editUser = createAction(types.EDIT_USER_REQUEST);
+export const editUserSuccess = createAction(types.EDIT_USER_SUCCESS);
+export const editUserFailure = createAction(types.EDIT_USER_FAILURE);

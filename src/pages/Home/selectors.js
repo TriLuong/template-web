@@ -16,3 +16,8 @@ export const getUsers = createSelector(
   currentLoadsReducer,
   users => users.get('users'),
 );
+
+export const getUser = createSelector(
+  currentLoadsReducer,
+  user => user.get('user'),
+);

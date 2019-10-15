@@ -28,6 +28,14 @@ function* addLoadRequest({ payload }) {
   }
 }
 
+function* getUser({ payload }) {
+  try {
+    yield put(actions.getUserSuccess(payload));
+  } catch (error) {
+    yield put(actions.getUserFailure(error));
+  }
+}
+
 function* addUser({ payload }) {
   try {
     yield put(actions.addUserSuccess(payload));
@@ -41,4 +49,5 @@ export default function* currentLoadWatcher() {
   yield takeLatest(types.GET_CURRENT_LOADS_REQUEST, getCurrentLoads);
   yield takeLatest(types.GET_USERS_REQUEST, getUsers);
   yield takeLatest(types.ADD_USER_REQUEST, addUser);
+  yield takeLatest(types.GET_USER_REQUEST, getUser);
 }

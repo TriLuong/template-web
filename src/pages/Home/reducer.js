@@ -5,6 +5,7 @@ const initialState = fromJS({
   isFetching: false,
   currentLoads: [],
   users: [],
+  user: {},
   error: null,
 });
 
@@ -13,6 +14,7 @@ function loginReducer(state = initialState, action) {
     case types.ADD_LOAD_REQUEST:
     case types.GET_CURRENT_LOADS_REQUEST:
     case types.GET_USERS_REQUEST:
+    case types.GET_USER_REQUEST:
       return state.set('isFetching', true).set('error', null);
 
     case types.GET_USERS_SUCCESS:
@@ -33,15 +35,25 @@ function loginReducer(state = initialState, action) {
         .set('isFetching', false)
         .set('error', null);
     }
+    case types.GET_USER_SUCCESS: {
+      const users = [...state.get('users')];
+      const user = users.find(item => item.id === action.payload.id);
+      return state
+        .set('user', user)
+        .set('isFetching', false)
+        .set('error', null);
+    }
+
     case types.ADD_USER_SUCCESS: {
       const users = [...state.get('users')];
-      users.push(action.payload);
+      users.push({ ...action.payload, id: users.length });
       return state
         .set('users', users)
         .set('isFetching', false)
         .set('error', null);
     }
 
+    case types.GET_USER_FAILURE:
     case types.GET_USERS_FAILURE:
     case types.GET_CURRENT_LOADS_FAILURE:
     case types.ADD_LOAD_FAILURE:

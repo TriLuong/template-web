@@ -81,9 +81,16 @@ class Home extends PureComponent {
     }));
   };
 
+  EditUser = id => {
+    const { doGetUser } = this.props;
+    doGetUser({ id });
+    this.toggleUsers();
+  };
+
   renderContent = content => {
-    const { currentLoads, users } = this.props;
+    const { currentLoads, users, user } = this.props;
     const { modalCurrentLoads, modalUser } = this.state;
+
     switch (content) {
       case 'Dashboard':
         return <Dashboard />;
@@ -103,6 +110,8 @@ class Home extends PureComponent {
             onSubmit={this.onSubmitUser}
             visibleModal={modalUser}
             toggle={this.toggleUsers}
+            onEdit={this.EditUser}
+            user={user}
           />
         );
       default:
@@ -141,6 +150,7 @@ const mapStateToProps = store => ({
   currentLoads: getReducer.getCurrentLoads(store),
   eror: getReducer.getErr(store),
   users: getReducer.getUsers(store),
+  user: getReducer.getUser(store),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -148,6 +158,7 @@ const mapDispatchToProps = dispatch => ({
   doAddLoad: evt => dispatch(actions.addLoad(evt)),
   doGetUsers: evt => dispatch(actions.getUsers(evt)),
   doAddUser: evt => dispatch(actions.addUser(evt)),
+  doGetUser: evt => dispatch(actions.getUser(evt)),
 });
 
 const withConnect = connect(

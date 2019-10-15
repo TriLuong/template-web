@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
-const TableUsers = ({ data }) => (
+const TableUsers = ({ data, onEdit }) => (
   <Table>
     <thead>
       <tr>
@@ -27,7 +27,11 @@ const TableUsers = ({ data }) => (
           <td>{item.truck ? 'Yes' : 'No'}</td>
           <td>{item.availble ? 'Yes' : 'No'}</td>
           <td>{item.notes}</td>
-          <td />
+          <td>
+            <Button color="info" onClick={() => onEdit(item.id)}>
+              Edit
+            </Button>
+          </td>
         </tr>
       ))}
     </tbody>
