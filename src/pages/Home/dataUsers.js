@@ -8,7 +8,7 @@ export default [
     cell: '0123456',
     truck: true,
     availble: true,
-    notes: '',
+    notes: 'Max 10 loads.',
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export default [
     cell: '0964678',
     truck: false,
     availble: false,
-    notes: '',
+    notes: 'Availble at the afternoon',
   },
   {
     id: 4,
@@ -41,6 +41,6 @@ export default [
     cell: '09566546',
     truck: true,
     availble: true,
-    notes: '',
+    notes: 'No comment',
   },
 ];

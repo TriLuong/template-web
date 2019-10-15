@@ -8,22 +8,27 @@ import { InputSelect } from 'components/common/Input';
 const optionDriver = [
   {
     id: 1,
+    value: 'Tony',
     label: 'Tony',
   },
   {
     id: 2,
+    value: 'Hulk',
     label: 'Hulk',
   },
   {
     id: 3,
+    value: 'Larson',
     label: 'Larson',
   },
   {
     id: 4,
+    value: 'Brian',
     label: 'Brian',
   },
   {
     id: 5,
+    value: 'Scarlet',
     label: 'Scarlet',
   },
 ];
@@ -31,22 +36,27 @@ const optionDriver = [
 const optionRep = [
   {
     id: 1,
+    value: 'Mark',
     label: 'Mark',
   },
   {
     id: 2,
+    value: 'Bill',
     label: 'Bill',
   },
   {
     id: 3,
+    value: 'Elon',
     label: 'Elon',
   },
   {
     id: 4,
+    value: 'Warrent',
     label: 'Warrent',
   },
   {
     id: 5,
+    value: 'Bezos',
     label: 'Bezos',
   },
 ];
