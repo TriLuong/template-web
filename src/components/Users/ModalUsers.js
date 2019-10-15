@@ -5,52 +5,36 @@ import * as Yup from 'yup';
 import Modal from 'components/common/Modal';
 import { InputSelect } from 'components/common/Input';
 
-const optionDriver = [
+const optionRole = [
   {
     id: 1,
-    label: 'Tony',
+    label: 'Admin',
   },
   {
     id: 2,
-    label: 'Hulk',
+    label: 'Driver',
   },
   {
     id: 3,
-    label: 'Larson',
+    label: 'Truck',
   },
   {
     id: 4,
-    label: 'Brian',
-  },
-  {
-    id: 5,
-    label: 'Scarlet',
+    label: 'Rep',
   },
 ];
 
-const optionRep = [
+const optionVailable = [
   {
     id: 1,
-    label: 'Mark',
+    label: 'Yes',
   },
   {
     id: 2,
-    label: 'Bill',
-  },
-  {
-    id: 3,
-    label: 'Elon',
-  },
-  {
-    id: 4,
-    label: 'Warrent',
-  },
-  {
-    id: 5,
-    label: 'Bezos',
+    label: 'No',
   },
 ];
-class ModalCurrentLoads extends PureComponent {
+class ModalUsers extends PureComponent {
   onSubmit = values => {
     const { onSubmit } = this.props;
     onSubmit(values);
@@ -59,13 +43,13 @@ class ModalCurrentLoads extends PureComponent {
   render() {
     const { visibleModal, toggle, title } = this.props;
     const schema = Yup.object().shape({
-      load: Yup.number().required('Required'),
-      container: Yup.number().required('Required'),
-      returnRail: Yup.number().required('Required'),
-      pull: Yup.number().required('Required'),
-      loadedRail: Yup.number().required('Required'),
-      driver: Yup.string().required('Required'),
-      rep: Yup.string().required('Required'),
+      role: Yup.string().required('Required'),
+      name: Yup.string().required('Required'),
+      email: Yup.string().required('Required'),
+      password: Yup.string().required('Required'),
+      cell: Yup.number().required('Required'),
+      availble: Yup.string().required('Required'),
+      notes: Yup.string().required('Required'),
     });
     return (
       <Modal
@@ -77,17 +61,30 @@ class ModalCurrentLoads extends PureComponent {
           {({ handleSubmit, handleChange, isValid }) => (
             <Form onSubmit={handleSubmit}>
               <Row form>
+                <Col sm={6}>
+                  <FormGroup row>
+                    <InputSelect
+                      label="Role"
+                      name="role"
+                      option={optionRole}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+
+              <Row form>
                 <Col md={6}>
                   <FormGroup row>
-                    <Label for="exampleEmail" sm={3}>
-                      Load #
+                    <Label for="exampleEmail" sm={2}>
+                      Name
                     </Label>
-                    <Col sm={9}>
+                    <Col sm={10}>
                       <Input
-                        type="number"
-                        name="load"
-                        id="load"
-                        placeholder="Load No"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Name"
                         onChange={handleChange}
                       />
                     </Col>
@@ -96,14 +93,14 @@ class ModalCurrentLoads extends PureComponent {
                 <Col md={6}>
                   <FormGroup row>
                     <Label for="examplePassword" sm={3}>
-                      Container #
+                      Email
                     </Label>
                     <Col sm={9}>
                       <Input
-                        type="number"
-                        name="container"
-                        id="container"
-                        placeholder="Container No"
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Email"
                         onChange={handleChange}
                       />
                     </Col>
@@ -113,15 +110,15 @@ class ModalCurrentLoads extends PureComponent {
               <Row form>
                 <Col md={6}>
                   <FormGroup row>
-                    <Label for="exampleEmail" sm={3}>
-                      Return Rail
+                    <Label for="exampleEmail" sm={2}>
+                      Password
                     </Label>
-                    <Col sm={9}>
+                    <Col sm={10}>
                       <Input
-                        type="number"
-                        name="returnRail"
-                        id="returnRail"
-                        placeholder="Return Rail"
+                        type="text"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
                         onChange={handleChange}
                       />
                     </Col>
@@ -130,52 +127,49 @@ class ModalCurrentLoads extends PureComponent {
                 <Col md={6}>
                   <FormGroup row>
                     <Label for="examplePassword" sm={3}>
-                      Yard Pull
+                      Cell Phone
                     </Label>
                     <Col sm={9}>
                       <Input
                         type="number"
-                        name="pull"
-                        id="pull"
-                        placeholder="Pull"
+                        name="cell"
+                        id="cell"
+                        placeholder="Cell Phone"
                         onChange={handleChange}
                       />
                     </Col>
                   </FormGroup>
                 </Col>
               </Row>
+              <Row>
+                <Col sm={6}>
+                  <FormGroup row>
+                    <InputSelect
+                      label="Availble"
+                      name="availble"
+                      option={optionVailable}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
               <FormGroup row>
-                <Label for="examplePassword" sm={2}>
-                  Loaded Rail
+                <Label for="examplePassword" sm={1}>
+                  Notes
                 </Label>
-                <Col sm={10}>
+                <Col sm={11}>
                   <Input
-                    type="number"
-                    name="loadedRail"
-                    id="loadedRail"
-                    placeholder="Loaded Rail"
+                    type="textarea"
+                    name="notes"
+                    id="notes"
+                    placeholder="Notes"
                     onChange={handleChange}
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
-                <InputSelect
-                  label="Driver"
-                  name="driver"
-                  option={optionDriver}
-                  onChange={handleChange}
-                />
-              </FormGroup>
-              <FormGroup row>
-                <InputSelect
-                  label="Rep"
-                  name="rep"
-                  option={optionRep}
-                  onChange={handleChange}
-                />
-              </FormGroup>
+
               <Button type="submit" color="primary" disabled={!isValid}>
-                Add Load
+                Add User
               </Button>
               <Button color="secondary" onClick={toggle}>
                 Cancel
@@ -188,4 +182,4 @@ class ModalCurrentLoads extends PureComponent {
   }
 }
 
-export default ModalCurrentLoads;
+export default ModalUsers;

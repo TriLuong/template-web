@@ -13,7 +13,7 @@ const TableUsers = ({ data }) => (
         <th>Truck</th>
         <th>Availble(Y/N)</th>
         <th>Notes</th>
-        <th>Edit Recorded</th>
+        <th>Edit Record</th>
       </tr>
     </thead>
     <tbody>

@@ -34,15 +34,17 @@ class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      itemSelected: 'Current Loads',
+      itemSelected: 'Users',
       modalCurrentLoads: false,
+      modalUser: false,
       visibleSidebar: true,
     };
   }
 
   componentDidMount() {
-    const { doGetCurrentLoads } = this.props;
+    const { doGetCurrentLoads, doGetUsers } = this.props;
     doGetCurrentLoads();
+    doGetUsers();
   }
 
   setItemSelected = item => {
@@ -52,12 +54,24 @@ class Home extends PureComponent {
   onSubmitCurrentLoads = values => {
     const { doAddLoad } = this.props;
     doAddLoad(values);
-    this.toggle();
+    this.toggleCurrentLoads();
   };
 
-  toggle = () => {
+  onSubmitUser = values => {
+    const { doAddUser } = this.props;
+    doAddUser(values);
+    this.toggleUsers();
+  };
+
+  toggleCurrentLoads = () => {
     this.setState(prevState => ({
       modalCurrentLoads: !prevState.modalCurrentLoads,
+    }));
+  };
+
+  toggleUsers = () => {
+    this.setState(prevState => ({
+      modalUser: !prevState.modalUser,
     }));
   };
 
@@ -68,22 +82,29 @@ class Home extends PureComponent {
   };
 
   renderContent = content => {
-    const { data } = this.props;
-    const { modalCurrentLoads } = this.state;
+    const { currentLoads, users } = this.props;
+    const { modalCurrentLoads, modalUser } = this.state;
     switch (content) {
       case 'Dashboard':
         return <Dashboard />;
       case 'Current Loads':
         return (
           <CurrentLoads
-            data={data}
+            data={currentLoads}
             onSubmit={this.onSubmitCurrentLoads}
             visibleModal={modalCurrentLoads}
-            toggle={this.toggle}
+            toggle={this.toggleCurrentLoads}
           />
         );
       case 'Users':
-        return <Users data={dataUsers} />;
+        return (
+          <Users
+            data={users}
+            onSubmit={this.onSubmitUser}
+            visibleModal={modalUser}
+            toggle={this.toggleUsers}
+          />
+        );
       default:
         return null;
     }
@@ -117,13 +138,16 @@ class Home extends PureComponent {
 }
 
 const mapStateToProps = store => ({
-  data: getReducer.getData(store),
+  currentLoads: getReducer.getCurrentLoads(store),
   eror: getReducer.getErr(store),
+  users: getReducer.getUsers(store),
 });
 
 const mapDispatchToProps = dispatch => ({
   doGetCurrentLoads: evt => dispatch(actions.getCurrentLoads(evt)),
   doAddLoad: evt => dispatch(actions.addLoad(evt)),
+  doGetUsers: evt => dispatch(actions.getUsers(evt)),
+  doAddUser: evt => dispatch(actions.addUser(evt)),
 });
 
 const withConnect = connect(
@@ -131,8 +155,8 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'currentLoadsReducer', reducer });
-const withSaga = injectSaga({ key: 'currentLoadsSaga', saga });
+const withReducer = injectReducer({ key: 'homeReducer', reducer });
+const withSaga = injectSaga({ key: 'homeReducer', saga });
 
 export default compose(
   withReducer,
