@@ -13,8 +13,6 @@ import Dashboard from 'components/Dashboard';
 import CurrentLoads from 'components/CurrentLoads';
 import './styles.scss';
 
-import dataCurrent from './dataCurrent';
-
 const sideBar = [
   {
     label: 'Dashboard',
@@ -37,31 +35,30 @@ class Home extends PureComponent {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { doGetCurrentLoads } = this.props;
+    doGetCurrentLoads();
+  }
+
   setItemSelected = item => {
     this.setState({ itemSelected: item });
   };
 
   onSubmitCurrentLoads = values => {
-    const { addLoad, data } = this.props;
-    console.log('data', data);
+    const { doAddLoad } = this.props;
 
-    addLoad(values);
+    doAddLoad(values);
   };
 
   renderContent = content => {
     const { data } = this.props;
-    console.log('data', data);
 
     switch (content) {
       case 'Dashboard':
         return <Dashboard />;
       case 'Current Loads':
         return (
-          <CurrentLoads
-            data={dataCurrent}
-            onSubmit={this.onSubmitCurrentLoads}
-          />
+          <CurrentLoads data={data} onSubmit={this.onSubmitCurrentLoads} />
         );
       default:
         return null;
@@ -99,7 +96,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addLoad: evt => dispatch(actions.addLoad(evt)),
+  doGetCurrentLoads: evt => dispatch(actions.getCurrentLoads(evt)),
+  doAddLoad: evt => dispatch(actions.addLoad(evt)),
 });
 
 const withConnect = connect(

@@ -22,8 +22,8 @@ class TableCurrentLoads extends React.PureComponent {
           </tr>
         </thead>
         <tbody>
-          {data.map(item => (
-            <tr key={item.id}>
+          {data.map((item, index) => (
+            <tr key={index}>
               <td>{item.load}</td>
               <td>{item.container}</td>
               <td>{item.reservation}</td>
