@@ -8,6 +8,7 @@ const InputSelect = ({ option, label, name, id, onChange }) => (
     </Label>
     <Col sm={10}>
       <Input type="select" name={name} id={id || name} onChange={onChange}>
+        <option>--- Please select ---</option>
         {option.map(item => (
           <option key={item.id}>{item.label}</option>
         ))}

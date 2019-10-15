@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Form, FormGroup, Label, Input, Col, Row, Button } from 'reactstrap';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 import Modal from 'components/common/Modal';
 import { InputSelect } from 'components/common/Input';
 
@@ -57,14 +58,23 @@ class ModalCurrentLoads extends PureComponent {
 
   render() {
     const { visibleModal, toggle, title } = this.props;
+    const schema = Yup.object().shape({
+      load: Yup.number().required('Required'),
+      container: Yup.number().required('Required'),
+      returnRail: Yup.number().required('Required'),
+      pull: Yup.number().required('Required'),
+      loadedRail: Yup.number().required('Required'),
+      driver: Yup.string().required('Required'),
+      rep: Yup.string().required('Required'),
+    });
     return (
       <Modal
         visibleModal={visibleModal}
         toggle={toggle}
         title={title}
         width="1000px">
-        <Formik onSubmit={this.onSubmit}>
-          {({ handleSubmit, handleChange }) => (
+        <Formik onSubmit={this.onSubmit} validationSchema={schema}>
+          {({ handleSubmit, handleChange, isValid }) => (
             <Form onSubmit={handleSubmit}>
               <Row form>
                 <Col md={6}>
@@ -164,7 +174,7 @@ class ModalCurrentLoads extends PureComponent {
                   onChange={handleChange}
                 />
               </FormGroup>
-              <Button type="submit" color="primary">
+              <Button type="submit" color="primary" disabled={!isValid}>
                 Do Something
               </Button>
               <Button color="secondary" onClick={toggle}>
