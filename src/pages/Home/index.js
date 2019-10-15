@@ -33,6 +33,7 @@ class Home extends PureComponent {
     this.state = {
       itemSelected: 'Current Loads',
       modalCurrentLoads: false,
+      visibleSidebar: true,
     };
   }
 
@@ -57,6 +58,12 @@ class Home extends PureComponent {
     }));
   };
 
+  toggleSidebar = () => {
+    this.setState(prevState => ({
+      visibleSidebar: !prevState.visibleSidebar,
+    }));
+  };
+
   renderContent = content => {
     const { data } = this.props;
     const { modalCurrentLoads } = this.state;
@@ -78,12 +85,14 @@ class Home extends PureComponent {
   };
 
   render() {
-    const { itemSelected } = this.state;
+    const { itemSelected, visibleSidebar } = this.state;
     return (
       <div className="containerHome">
-        <Header />
+        <Header toggleSideBar={this.toggleSidebar} />
         <div className="containerContent">
-          <div className="sideBar">
+          <div
+            className="sideBar"
+            style={visibleSidebar ? null : { display: 'none' }}>
             <SideBar
               listMenu={sideBar}
               itemSelected={itemSelected}

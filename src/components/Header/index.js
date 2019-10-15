@@ -51,13 +51,15 @@ class Header extends PureComponent {
       visibleDropdownAccount: false,
     }));
   };
+
   render() {
+    const { toggleSideBar } = this.props;
     const { visibleDropdownAccount, visibleDropdownLang } = this.state;
     return (
       <div className="containerHeader">
         <div className="headerLeft">
-          <button className="btnTag" type="button">
-            Tag
+          <button className="btnTag" type="button" onClick={toggleSideBar}>
+            Menu
           </button>
           <input type="text" placeholder="Search" className="searchInput" />
           <div className="dropdownMenu">
