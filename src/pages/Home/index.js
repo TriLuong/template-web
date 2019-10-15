@@ -11,7 +11,10 @@ import Header from 'components/Header';
 import SideBar from 'components/SideBar';
 import Dashboard from 'components/Dashboard';
 import CurrentLoads from 'components/CurrentLoads';
+import Users from 'components/Users';
 import './styles.scss';
+
+import dataUsers from './dataUsers';
 
 const sideBar = [
   {
@@ -79,6 +82,8 @@ class Home extends PureComponent {
             toggle={this.toggle}
           />
         );
+      case 'Users':
+        return <Users data={dataUsers} />;
       default:
         return null;
     }
