@@ -11,6 +11,7 @@ import * as actions from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import './styles.scss';
+import Loader from 'pages/Loader';
 
 class CurrentLoads extends PureComponent {
   state = {

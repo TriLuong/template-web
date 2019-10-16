@@ -11,6 +11,7 @@ import Header from 'components/Header';
 import SideBar from 'components/SideBar';
 import Dashboard from 'components/Dashboard';
 import CurrentLoads from 'pages/CurrentLoads';
+import Loader from 'pages/Loader';
 import Users from 'pages/Users';
 import './styles.scss';
 
@@ -32,7 +33,7 @@ class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      itemSelected: 'Users',
+      itemSelected: 'Current Loads',
       visibleSidebar: true,
     };
   }
@@ -85,6 +86,7 @@ class Home extends PureComponent {
               <h2>{itemSelected}</h2>
               {this.renderContent(itemSelected)}
             </div>
+            <Loader />
           </div>
         </div>
       </div>
