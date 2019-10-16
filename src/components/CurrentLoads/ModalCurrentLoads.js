@@ -130,8 +130,8 @@ class ModalCurrentLoads extends PureComponent {
                   onChange={handleChange}
                 />
               </FormGroup>
-              <Button type="submit" color="primary">
-                Add Load
+              <Button type="submit" color="primary" disabled={!isValid}>
+                {title}
               </Button>
               <Button color="secondary" onClick={toggle}>
                 Cancel

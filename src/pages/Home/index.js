@@ -10,11 +10,9 @@ import injectSaga from 'utils/injectSaga';
 import Header from 'components/Header';
 import SideBar from 'components/SideBar';
 import Dashboard from 'components/Dashboard';
-import CurrentLoads from 'components/CurrentLoads';
-import Users from 'components/Users';
+import CurrentLoads from 'pages/CurrentLoads';
+import Users from 'pages/Users';
 import './styles.scss';
-
-import dataUsers from './dataUsers';
 
 const sideBar = [
   {
@@ -35,55 +33,14 @@ class Home extends PureComponent {
     super(props);
     this.state = {
       itemSelected: 'Users',
-      modalCurrentLoads: false,
-      modalUser: false,
       visibleSidebar: true,
-      isEditUser: false,
     };
   }
 
-  componentDidMount() {
-    const { doGetCurrentLoads, doGetUsers } = this.props;
-    doGetCurrentLoads();
-    doGetUsers();
-  }
+  componentDidMount() {}
 
   setItemSelected = item => {
     this.setState({ itemSelected: item });
-  };
-
-  onSubmitCurrentLoads = values => {
-    const { doAddLoad } = this.props;
-    console.log('current', values);
-    doAddLoad(values);
-    this.toggleCurrentLoads();
-  };
-
-  onSubmitUser = values => {
-    const { doAddUser, doEditUser } = this.props;
-    const { isEditUser } = this.state;
-    if (!isEditUser) {
-      doAddUser(values);
-    } else {
-      doEditUser(values);
-    }
-    this.setState({ isEditUser: false });
-    this.toggleUsers();
-  };
-
-  toggleCurrentLoads = () => {
-    this.setState(prevState => ({
-      modalCurrentLoads: !prevState.modalCurrentLoads,
-    }));
-  };
-
-  toggleUsers = () => {
-    const { modalUser } = this.state;
-    const newModalUser = !modalUser;
-    if (!newModalUser) {
-      this.setState({ isEditUser: false });
-    }
-    this.setState({ modalUser: newModalUser });
   };
 
   toggleSidebar = () => {
@@ -92,48 +49,17 @@ class Home extends PureComponent {
     }));
   };
 
-  EditUser = id => {
-    const { doGetUser } = this.props;
-    this.setState({ isEditUser: true });
-    doGetUser({ id });
-    this.toggleUsers();
-  };
-
-  handleChangeFilter = event => {
-    const { doFilterUsers } = this.props;
-    const { value } = event.target;
-    doFilterUsers({ role: value });
-  };
-
   renderContent = content => {
-    const { currentLoads, users, user } = this.props;
-    const { modalCurrentLoads, modalUser, isEditUser } = this.state;
+    const { users, user } = this.props;
+    const { modalUser, isEditUser } = this.state;
 
     switch (content) {
       case 'Dashboard':
         return <Dashboard />;
       case 'Current Loads':
-        return (
-          <CurrentLoads
-            data={currentLoads}
-            onSubmit={this.onSubmitCurrentLoads}
-            visibleModal={modalCurrentLoads}
-            toggle={this.toggleCurrentLoads}
-          />
-        );
+        return <CurrentLoads />;
       case 'Users':
-        return (
-          <Users
-            data={users}
-            onSubmit={this.onSubmitUser}
-            visibleModal={modalUser}
-            toggle={this.toggleUsers}
-            onEdit={this.EditUser}
-            user={isEditUser ? user : {}}
-            title={isEditUser ? 'EDIT USER' : 'ADD USER'}
-            handleChangeFilter={this.handleChangeFilter}
-          />
-        );
+        return <Users />;
       default:
         return null;
     }
@@ -167,20 +93,17 @@ class Home extends PureComponent {
 }
 
 const mapStateToProps = store => ({
-  currentLoads: getReducer.getCurrentLoads(store),
-  eror: getReducer.getErr(store),
-  users: getReducer.getUsers(store),
-  user: getReducer.getUser(store),
+  // eror: getReducer.getErr(store),
+  // users: getReducer.getUsers(store),
+  // user: getReducer.getUser(store),
 });
 
 const mapDispatchToProps = dispatch => ({
-  doGetCurrentLoads: evt => dispatch(actions.getCurrentLoads(evt)),
-  doAddLoad: evt => dispatch(actions.addLoad(evt)),
-  doGetUsers: evt => dispatch(actions.getUsers(evt)),
-  doAddUser: evt => dispatch(actions.addUser(evt)),
-  doGetUser: evt => dispatch(actions.getUser(evt)),
-  doEditUser: evt => dispatch(actions.editUser(evt)),
-  doFilterUsers: evt => dispatch(actions.filterUsers(evt)),
+  // doGetUsers: evt => dispatch(actions.getUsers(evt)),
+  // doAddUser: evt => dispatch(actions.addUser(evt)),
+  // doGetUser: evt => dispatch(actions.getUser(evt)),
+  // doEditUser: evt => dispatch(actions.editUser(evt)),
+  // doFilterUsers: evt => dispatch(actions.filterUsers(evt)),
 });
 
 const withConnect = connect(
@@ -189,10 +112,10 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'homeReducer', reducer });
-const withSaga = injectSaga({ key: 'homeReducer', saga });
+// const withSaga = injectSaga({ key: 'homeSaga', saga });
 
 export default compose(
   withReducer,
-  withSaga,
+  // withSaga,
   withConnect,
 )(Home);

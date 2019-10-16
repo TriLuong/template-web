@@ -1,0 +1,10 @@
+.btnAddContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+  .btnAdd {
+    border-radius: 50%;
+  }
+}

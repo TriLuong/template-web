@@ -12,8 +12,15 @@ class ModalUsers extends PureComponent {
     onSubmit(values);
   };
 
+  handleChangeRole = (event, setFieldValue) => {
+    const { value } = event.target;
+    // this.setState({ role: value });
+    setFieldValue({ role: value });
+  };
+
   render() {
     const { visibleModal, toggle, title, user } = this.props;
+    // const { role } = this.state;
     const schema = Yup.object().shape({
       role: Yup.string().required('Required'),
       name: Yup.string().required('Required'),
@@ -35,7 +42,7 @@ class ModalUsers extends PureComponent {
           onSubmit={this.onSubmit}
           validationSchema={schema}
           isInitialValid={schema.isValidSync(user)}>
-          {({ handleSubmit, handleChange, isValid, values }) => (
+          {({ handleSubmit, handleChange, isValid, values, setFieldValue }) => (
             <Form onSubmit={handleSubmit}>
               <Row form>
                 <Col sm={6}>
@@ -87,6 +94,7 @@ class ModalUsers extends PureComponent {
                   </FormGroup>
                 </Col>
               </Row>
+
               <Row form>
                 <Col md={6}>
                   <FormGroup row>
