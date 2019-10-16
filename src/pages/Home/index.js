@@ -72,9 +72,7 @@ class Home extends PureComponent {
       <div className="containerHome">
         <Header toggleSideBar={this.toggleSidebar} />
         <div className="containerContent">
-          <div
-            className="sideBar"
-            style={visibleSidebar ? null : { display: 'none' }}>
+          <div className={`sideBar ${visibleSidebar ? '' : 'hiddenSiderbar'}`}>
             <SideBar
               listMenu={sideBar}
               itemSelected={itemSelected}

@@ -1,12 +1,18 @@
 .containerHome {
   height: 100vh;
   background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
   .containerContent {
     display: flex;
     flex-direction: row;
     flex: 1;
     .sideBar {
       flex: 1;
+      // animation: scale-display 0.5s;
+    }
+    .hiddenSiderbar {
+      display: none;
     }
     .content {
       position: relative;
@@ -19,3 +25,17 @@
     }
   }
 }
+
+// @keyframes scale-display {
+//   0% {
+//     opacity: 0;
+//     // transform: translateX(0);
+//     // -webkit-transform: ease;
+//   }
+
+//   100% {
+//     opacity: 1;
+//     // transform: translateX(10px);
+//     // -webkit-transform: ease;
+//   }
+// }
