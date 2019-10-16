@@ -33,7 +33,7 @@ class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      itemSelected: 'Current Loads',
+      itemSelected: 'Dashboard',
       visibleSidebar: true,
     };
   }
@@ -81,7 +81,9 @@ class Home extends PureComponent {
           </div>
           <div className="content">
             <div className="headerContent">
-              <h2>{itemSelected}</h2>
+              <div className="headerTitle">
+                <h2>{itemSelected}</h2>
+              </div>
               {this.renderContent(itemSelected)}
             </div>
             <Loader />
